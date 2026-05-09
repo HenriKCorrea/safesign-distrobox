@@ -20,3 +20,7 @@ sudo sed -i 's|^Icon=.*|Icon='"$FIREFOX_PROFILE_DIR"'/icon.png|' /usr/share/appl
 # Delete firefox if already exists, then re-export it with the updated profile directory
 distrobox-export --list-apps | grep -qi firefox && distrobox-export --app firefox --delete
 distrobox-export --app firefox --extra-flags "--no-remote --profile $FIREFOX_PROFILE_DIR"
+
+# Delete tokenadmin if already exists, then re-export it to ensure it appears in the application menu
+distrobox-export --list-apps | grep -qi tokenadmin && distrobox-export --app tokenadmin --delete
+distrobox-export --app tokenadmin
